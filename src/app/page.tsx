@@ -1,21 +1,11 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { Mail, Shield, Zap, Globe, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
+import { Shield, Zap, Globe, Github, Twitter, Code2 } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
+import { TeamMember } from '@/components/TeamMember';
 
 export default function Home() {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail('');
-      // Here you would typically send the email to your backend/service like Resend or Mailchimp
-    }
-  };
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-emerald-500/30 selection:text-emerald-200 overflow-hidden bg-black">
@@ -51,39 +41,16 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Email Capture Form */}
-        <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-md mx-auto mb-20 relative z-20">
-          <div className="relative glass-panel rounded-2xl p-2 flex flex-col sm:flex-row items-center gap-2">
-            {submitted ? (
-              <div className="flex items-center justify-center gap-3 w-full py-3 px-4 text-emerald-400 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-                <CheckCircle2 className="w-5 h-5" />
-                <span className="font-medium">You're on the list! We'll notify you soon.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex w-full flex-col sm:flex-row gap-2">
-                <div className="relative flex-grow">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-white placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all font-medium relative z-10"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="whitespace-nowrap flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 py-3 px-6 rounded-xl font-semibold transition-all group"
-                >
-                  Join Waitlist
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </form>
-            )}
-          </div>
+        {/* Fake CTA */}
+        <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-sm mx-auto mb-20 relative z-20 text-center">
+          <button
+            onClick={() => alert("We told you we haven't built it yet! But we appreciate the enthusiasm.")}
+            className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-black hover:bg-emerald-400 py-4 px-8 rounded-2xl font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.3)]"
+          >
+            Join the Non-Existent Waitlist
+          </button>
           <p className="text-center text-sm text-zinc-500 mt-4 flex items-center justify-center gap-1.5">
-            <Shield className="w-3.5 h-3.5" /> No spam. Unsubscribe anytime.
+            <Shield className="w-3.5 h-3.5" /> No spam. Because there is no database.
           </p>
         </div>
 
@@ -128,6 +95,33 @@ export default function Home() {
                 Because it is the color of money, nature, and the Matrix. Mostly the Matrix though. Our founder insisted on it.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Humorous Team Section */}
+        <div className="w-full max-w-5xl opacity-0 animate-fade-in-up delay-[600ms] mb-24 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">"Team"</span></h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <TeamMember 
+              name="CEO & Founder" 
+              role="Chief 'Ideas' Officer"
+              joke="Currently Googling 'how to start a startup without coding'."
+            />
+            <TeamMember 
+              name="CTO" 
+              role="Lead Prompt Engineer"
+              joke="Copy-pasting AI code until it compiles. It's honest work."
+            />
+            <TeamMember 
+              name="CMO" 
+              role="Head of Vibes"
+              joke="Ensuring the color green is sufficiently green."
+            />
+            <TeamMember 
+              name="The Intern" 
+              role="Actually does the work"
+              joke="Please send help. They locked me in the server room."
+            />
           </div>
         </div>
 
