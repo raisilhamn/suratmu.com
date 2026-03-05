@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 
 import { Shield, Zap, Globe, Github, Twitter, Code2, Send } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
+import MouseSpotlight from '@/components/MouseSpotlight';
 import { toast } from "sonner";
 import {
   Accordion,
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-emerald-500/30 selection:text-emerald-200 overflow-hidden bg-black">
       
       {/* Background Ambient Glows */}
+      <MouseSpotlight />
       <StarryBackground />
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-600/20 blur-[120px] pointer-events-none animate-pulse-glow" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-teal-600/20 blur-[120px] pointer-events-none animate-pulse-glow" style={{ animationDelay: '2s' }} />
@@ -26,15 +28,17 @@ export default function Home() {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 z-0 bg-[url('https://res.cloudinary.com/dz209s6jk/image/upload/v1691404172/grid_yv4p4s.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-[0.05] pointer-events-none" />
 
+      {/* Grain Overlay for premium texture */}
+      <div className="absolute inset-0 z-[5] opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
       <main className="relative z-10 flex flex-col items-center w-full max-w-5xl px-6 py-24 mx-auto isolate">
         
         {/* Header Badge */}
         <div className="opacity-0 animate-fade-in-up inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium mb-8">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500/50"></span>
           </span>
-          Coming Soon
+          Early Access Closed
         </div>
 
         {/* Hero Section */}
@@ -44,25 +48,25 @@ export default function Home() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Perfectly forwarded.</span>
           </h1>
           <p className="opacity-0 animate-fade-in-up delay-200 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is a premium, privacy-first email forwarding service. Protect your personal inbox and maintain your professional identity with custom domains.
+            <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is a premium, privacy-first email forwarding service. Protect your personal inbox and maintain your professional identity with effortless custom domains.
           </p>
         </div>
 
-        {/* Professional CTA */}
+        {/* Professional CTA - Closed State */}
         <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-sm mx-auto mb-20 relative z-20 text-center">
           <button
             onClick={() => {
-              toast("Access Request Received", {
-                description: "Thank you for your interest. We are currently reviewing early access requests for our private beta.",
+              toast("Initial Beta Period Closed", {
+                description: "Thank you for your interest. Early access requests for our private beta are currently at capacity.",
                 duration: 5000,
               });
             }}
-            className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-black hover:bg-emerald-400 py-4 px-8 rounded-2xl font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.3)]"
+            className="w-full flex items-center justify-center gap-2 bg-zinc-800 text-white/50 border border-white/10 py-4 px-8 rounded-2xl font-bold text-lg cursor-not-allowed grayscale"
           >
-            Request Early Access
+            Private Beta Full
           </button>
           <p className="text-center text-sm text-zinc-500 mt-4 flex items-center justify-center gap-1.5">
-            <Shield className="w-3.5 h-3.5" /> Join our private beta. Priority access for early adopters.
+            <Shield className="w-3.5 h-3.5" /> Registration is temporarily paused.
           </p>
         </div>
 
