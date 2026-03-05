@@ -1,7 +1,9 @@
 'use client';
 
 import { useRef, useState } from 'react';
-
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
+import Link from 'next/link';
 import { Shield, Zap, Globe, Github, Twitter, Code2, Send } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
 import MouseSpotlight from '@/components/MouseSpotlight';
@@ -14,6 +16,25 @@ import {
 } from "@/components/ui/accordion";
 
 export default function Home() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Mouse parallax for hero text
+  const heroX = useTransform(smoothX, [0, 1920], [5, -5]);
+  const heroY = useTransform(smoothY, [0, 1080], [5, -5]);
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-emerald-500/30 selection:text-emerald-200 overflow-hidden bg-black">
@@ -43,28 +64,70 @@ export default function Home() {
 
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto space-y-6 mb-16">
-          <h1 className="opacity-0 animate-fade-in-up delay-100 text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-zinc-200 to-zinc-500 glow-text mb-6">
-            Your emails. <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Perfectly forwarded.</span>
-          </h1>
-          <p className="opacity-0 animate-fade-in-up delay-200 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is a premium, privacy-first email forwarding service. Protect your personal inbox and maintain your professional identity with effortless custom domains.
-          </p>
+          <motion.div
+            style={{ x: heroX, y: heroY }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.1,
+                }
+              }
+            }}
+          >
+            <motion.h1 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6"
+            >
+              Your emails. <br className="hidden md:block" />
+              <span className="text-emerald-400">Perfectly forwarded.</span>
+            </motion.h1>
+
+            <motion.p 
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed"
+            >
+              <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is a premium, privacy-first email forwarding service. Protect your personal inbox and maintain your professional identity with effortless custom domains.
+            </motion.p>
+          </motion.div>
         </div>
 
-        {/* Professional CTA - Closed State */}
+        {/* Professional CTA - Closed State with Surprise Hover */}
         <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-sm mx-auto mb-20 relative z-20 text-center">
-          <button
-            onClick={() => {
-              toast("Initial Beta Period Closed", {
-                description: "Thank you for your interest. Early access requests for our private beta are currently at capacity.",
-                duration: 5000,
-              });
-            }}
-            className="w-full flex items-center justify-center gap-2 bg-zinc-800 text-white/50 border border-white/10 py-4 px-8 rounded-2xl font-bold text-lg cursor-not-allowed grayscale"
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="group relative"
           >
-            Private Beta Full
-          </button>
+            {/* Surprise Glow Background */}
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500/0 via-emerald-500/20 to-emerald-500/0 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <button
+              onClick={() => {
+                toast("Initial Beta Period Closed", {
+                  description: "Thank you for your interest. Early access requests for our private beta are currently at capacity.",
+                  duration: 5000,
+                });
+              }}
+              className="relative w-full overflow-hidden flex items-center justify-center gap-2 bg-zinc-900/80 backdrop-blur-xl text-white/40 border border-white/10 py-4 px-8 rounded-2xl font-bold text-lg cursor-not-allowed group"
+            >
+              {/* Shifting Text Surprise */}
+              <span className="inline-block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                Private Beta Full
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center translate-y-full opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 text-emerald-500/80">
+                Kebanyakan yang daftar  
+              </span>
+            </button>
+          </motion.div>
           <p className="text-center text-sm text-zinc-500 mt-4 flex items-center justify-center gap-1.5">
             <Shield className="w-3.5 h-3.5" /> Registration is temporarily paused.
           </p>
@@ -99,7 +162,7 @@ export default function Home() {
                 When will Suratmu be available?
               </AccordionTrigger>
               <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
-                We are currently in a closed beta phase, refining our infrastructure for global delivery. We anticipate a public launch in late 2026.
+                We are currently in a state of perpetual refinement. While our roadmap technically lists a 2026 launch, we prefer to think of Suratmu as a fine wine—it will ship precisely when it is ready, which is often 'next quarter'.
               </AccordionContent>
             </AccordionItem>
 
@@ -148,9 +211,8 @@ export default function Home() {
             <span>© {new Date().getFullYear()}</span>
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
           </div>
         </div>
       </footer>
