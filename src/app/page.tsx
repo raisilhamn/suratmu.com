@@ -38,7 +38,7 @@ export default function Home() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Perfectly forwarded.</span>
           </h1>
           <p className="opacity-0 animate-fade-in-up delay-200 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Suratmu is the premium, privacy-first email forwarding service for individuals and businesses. Bring your custom domains and protect your real inbox.
+            <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is your gateway to a cleaner, safer inbox. We provide premium, privacy-first email forwarding for individuals and businesses. 
           </p>
         </div>
 
