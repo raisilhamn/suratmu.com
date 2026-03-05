@@ -123,8 +123,8 @@ export default function Home() {
               <span className="inline-block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
                 Private Beta Full
               </span>
-              <span className="absolute inset-0 flex items-center justify-center translate-y-full opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 text-emerald-500/80">
-                Kebanyakan yang daftar  
+              <span className="absolute inset-0 flex items-center justify-center translate-y-full opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 text-emerald-500/80 uppercase tracking-wider text-xs font-black">
+                Kebek banget bre
               </span>
             </button>
           </motion.div>
