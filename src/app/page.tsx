@@ -53,7 +53,6 @@ export default function Home() {
 
         {/* Email Capture Form */}
         <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-md mx-auto mb-20 relative z-20">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
           <div className="relative glass-panel rounded-2xl p-2 flex flex-col sm:flex-row items-center gap-2">
             {submitted ? (
               <div className="flex items-center justify-center gap-3 w-full py-3 px-4 text-emerald-400 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
@@ -88,30 +87,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Floating Stats Gimmick */}
-        <div className="opacity-0 animate-fade-in-up delay-400 flex flex-wrap justify-center gap-8 mb-24">
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400">
-              10M+
-            </span>
-            <span className="text-sm font-medium text-zinc-500 mt-1">Emails Routed</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400">
-              99.9%
-            </span>
-            <span className="text-sm font-medium text-zinc-500 mt-1">Uptime SLA</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-400">
-              &lt; 50ms
-            </span>
-            <span className="text-sm font-medium text-zinc-500 mt-1">Global Latency</span>
-          </div>
-        </div>
-
         {/* Features Grid */}
-        <div className="relative z-10 opacity-0 animate-fade-in-up delay-500 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mb-24">
+        <div className="relative z-10 opacity-0 animate-fade-in-up delay-400 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl mb-24">
           <FeatureCard 
             icon={<Globe className="w-6 h-6 text-emerald-400" />}
             title="Custom Domains"
@@ -129,20 +106,31 @@ export default function Home() {
           />
         </div>
 
-        {/* Gimmick: Integrations Banner */}
-        <div className="w-full border-y border-white/5 py-10 opacity-0 animate-fade-in-up delay-500 overflow-hidden relative isolate">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10 w-full"></div>
-          <p className="text-center text-sm font-medium text-zinc-500 mb-6 relative z-20">Integrating perfectly with your favorite tools</p>
-          <div className="flex justify-center gap-12 sm:gap-24 opacity-40 grayscale group-hover:grayscale-0 transition-all duration-500 hover:opacity-100 min-w-max">
-            {/* Fake logos using text for demo */}
-            <span className="text-xl font-bold tracking-tighter mix-blend-plus-lighter text-zinc-300">Gmail</span>
-            <span className="text-xl font-bold tracking-tighter mix-blend-plus-lighter text-zinc-300">Outlook</span>
-            <span className="text-xl font-bold tracking-tighter mix-blend-plus-lighter text-zinc-300">Proton</span>
-            <span className="text-xl font-bold tracking-tighter mix-blend-plus-lighter text-zinc-300">iCloud</span>
-            <span className="text-xl font-bold tracking-tighter mix-blend-plus-lighter text-zinc-300">Fastmail</span>
-            <span className="text-xl font-bold tracking-tighter mix-blend-plus-lighter text-zinc-300 hidden md:block">Hey</span>
+        {/* Humorous FAQ Section */}
+        <div className="w-full max-w-3xl opacity-0 animate-fade-in-up delay-500 mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8 text-white">Frequently Astounding Questions</h2>
+          <div className="space-y-4">
+            <div className="glass-panel p-6 rounded-2xl">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-2">Are you actually building this?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Yes, but right now we are mostly staring at this glowing green landing page because it looks extremely cool. The backend is powered by hopes, dreams, and copious amounts of coffee.
+              </p>
+            </div>
+            <div className="glass-panel p-6 rounded-2xl">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-2">Will you actually forward my emails?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Eventually! Once we figure out how SMTP works without breaking the space-time continuum. For now, putting your email in the box just makes us feel validated.
+              </p>
+            </div>
+            <div className="glass-panel p-6 rounded-2xl">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-2">Why green?</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Because it is the color of money, nature, and the Matrix. Mostly the Matrix though. Our founder insisted on it.
+              </p>
+            </div>
           </div>
         </div>
+
       </main>
 
       {/* Footer */}
