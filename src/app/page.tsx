@@ -5,6 +5,12 @@ import { useRef, useState } from 'react';
 import { Shield, Zap, Globe, Github, Twitter, Code2, Send } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
 import { toast } from "sonner";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Home() {
 
@@ -82,26 +88,44 @@ export default function Home() {
         {/* Humorous FAQ Section */}
         <div className="w-full max-w-3xl opacity-0 animate-fade-in-up delay-500 mb-24">
           <h2 className="text-3xl font-bold text-center mb-8 text-white">Frequently Astounding Questions</h2>
-          <div className="space-y-4">
-            <div className="glass-panel p-6 rounded-2xl">
-              <h3 className="text-lg font-semibold text-emerald-400 mb-2">Are you actually building this?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
+          
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            <AccordionItem value="item-1" className="glass-panel px-6 rounded-2xl border-none">
+              <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
+                Are you actually building this?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
                 Yes, but right now we are mostly staring at this glowing green landing page because it looks extremely cool. The backend is powered by hopes, dreams, and copious amounts of coffee.
-              </p>
-            </div>
-            <div className="glass-panel p-6 rounded-2xl">
-              <h3 className="text-lg font-semibold text-emerald-400 mb-2">Will you actually forward my emails?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                Eventually! Once we figure out how SMTP works without breaking the space-time continuum. For now, putting your email in the box just makes us feel validated.
-              </p>
-            </div>
-            <div className="glass-panel p-6 rounded-2xl">
-              <h3 className="text-lg font-semibold text-emerald-400 mb-2">Why green?</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-2" className="glass-panel px-6 rounded-2xl border-none">
+              <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
+                Will you actually forward my emails?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
+                Eventually! Once we figure out how SMTP works without breaking the space-time continuum. For now, clicking the buttons just makes us feel validated.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-3" className="glass-panel px-6 rounded-2xl border-none">
+              <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
+                Why green?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
                 Because it is the color of money, nature, and the Matrix. Mostly the Matrix though. Our founder insisted on it.
-              </p>
-            </div>
-          </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="item-4" className="glass-panel px-6 rounded-2xl border-none">
+              <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
+                Is it really lightning fast?
+              </AccordionTrigger>
+              <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
+                It's so fast that your email might arrive before you even send it. (Note: This is a blatant lie, but it sounds premium, doesn't it?)
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
 
       </main>
