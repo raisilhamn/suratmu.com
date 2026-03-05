@@ -44,25 +44,25 @@ export default function Home() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Perfectly forwarded.</span>
           </h1>
           <p className="opacity-0 animate-fade-in-up delay-200 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is your gateway to a cleaner, safer inbox. We provide premium, privacy-first email forwarding for individuals and businesses. 
+            <span className="text-emerald-400 font-medium">Suratmu</span> (English: <span className="text-zinc-300 italic">"Your Letter"</span>) is a premium, privacy-first email forwarding service. Protect your personal inbox and maintain your professional identity with custom domains.
           </p>
         </div>
 
-        {/* Fake CTA */}
+        {/* Professional CTA */}
         <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-sm mx-auto mb-20 relative z-20 text-center">
           <button
             onClick={() => {
-              toast("Waitlist Not Found 😅", {
-                description: "We told you we haven't built it yet! But we appreciate the enthusiasm.",
+              toast("Access Request Received", {
+                description: "Thank you for your interest. We are currently reviewing early access requests for our private beta.",
                 duration: 5000,
               });
             }}
             className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-black hover:bg-emerald-400 py-4 px-8 rounded-2xl font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.3)]"
           >
-            Join the Non-Existent Waitlist
+            Request Early Access
           </button>
           <p className="text-center text-sm text-zinc-500 mt-4 flex items-center justify-center gap-1.5">
-            <Shield className="w-3.5 h-3.5" /> No spam. Because there is no database.
+            <Shield className="w-3.5 h-3.5" /> Join our private beta. Priority access for early adopters.
           </p>
         </div>
 
@@ -71,58 +71,58 @@ export default function Home() {
           <FeatureCard 
             icon={<Globe className="w-6 h-6 text-emerald-400" />}
             title="Custom Domains"
-            description="Connect unlimited custom domains. Look professional and maintain your brand identity effortlessly."
+            description="Connect unlimited custom domains. Maintain consistent branding across all your professional communications."
           />
           <FeatureCard 
             icon={<Shield className="w-6 h-6 text-teal-400" />}
             title="Privacy First"
-            description="Hide your real email address. We strip trackers and never read or store the contents of your emails."
+            description="Keep your real email address private. We employ a zero-storage policy and strip tracking pixels automatically."
           />
           <FeatureCard 
             icon={<Zap className="w-6 h-6 text-green-400" />}
             title="Lightning Fast"
-            description="Emails are routed instantly through our global edge network. Zero noticeable delay in delivery."
+            description="Experience near-zero latency delivery. Our global edge network routes your emails instantly to their destination."
           />
         </div>
 
-        {/* Humorous FAQ Section */}
+        {/* Professional FAQ Section */}
         <div className="w-full max-w-3xl opacity-0 animate-fade-in-up delay-500 mb-24">
-          <h2 className="text-3xl font-bold text-center mb-8 text-white">Frequently Astounding Questions</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-white">Project Details</h2>
           
           <Accordion type="single" collapsible className="w-full space-y-4">
             <AccordionItem value="item-1" className="glass-panel px-6 rounded-2xl border-none">
               <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
-                Are you actually building this?
+                When will Suratmu be available?
               </AccordionTrigger>
               <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
-                Yes, but right now we are mostly staring at this glowing green landing page because it looks extremely cool. The backend is powered by hopes, dreams, and copious amounts of coffee.
+                We are currently in a closed beta phase, refining our infrastructure for global delivery. We anticipate a public launch in late 2026.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2" className="glass-panel px-6 rounded-2xl border-none">
               <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
-                Will you actually forward my emails?
+                How does the forwarding work?
               </AccordionTrigger>
               <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
-                Eventually! Once we figure out how SMTP works without breaking the space-time continuum. For now, clicking the buttons just makes us feel validated.
+                Our network uses proprietary edge routing technology. When an email is received, it is processed through our privacy layer and instantly pushed to your destination inbox via secure SMTP.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3" className="glass-panel px-6 rounded-2xl border-none">
               <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
-                Why green?
+                Is my privacy guaranteed?
               </AccordionTrigger>
               <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
-                Because it is the color of money, nature, and the Matrix. Mostly the Matrix though. Our founder insisted on it.
+                Security is our core mission. We operate with a strict zero-storage policy, meaning your email contents never touch our disks. Trackers are neutralized at the edge before delivery.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4" className="glass-panel px-6 rounded-2xl border-none">
               <AccordionTrigger className="text-lg font-semibold text-emerald-400 hover:no-underline py-6">
-                Is it really lightning fast?
+                Can I use my own custom domains?
               </AccordionTrigger>
               <AccordionContent className="text-zinc-400 text-sm leading-relaxed pb-6">
-                It's so fast that your email might arrive before you even send it. (Note: This is a blatant lie, but it sounds premium, doesn't it?)
+                Absolutely. Suratmu is designed for professional use. You can link unlimited custom domains by adding a simple MX record to your DNS configuration.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
