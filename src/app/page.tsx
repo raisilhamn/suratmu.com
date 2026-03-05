@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 
-import { Shield, Zap, Globe, Github, Twitter, Code2 } from 'lucide-react';
+import { Shield, Zap, Globe, Github, Twitter, Code2, Send } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
 import { toast } from "sonner";
 
@@ -110,10 +110,13 @@ export default function Home() {
       <footer className="w-full border-t border-white/10 mt-auto py-8">
         <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-white tracking-wider flex items-center gap-1.5">
-              <span className="w-4 h-4 rounded-[4px] bg-gradient-to-br from-emerald-500 to-teal-500 inline-block"></span>
+            <span className="font-bold text-white tracking-wider flex items-center gap-2">
+              <span className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-br from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30">
+                <Send className="w-3.5 h-3.5 -ml-0.5 mt-0.5" />
+              </span>
               SURATMU
             </span>
+            <span className="ml-2 text-zinc-600">|</span>
             <span>© {new Date().getFullYear()}</span>
           </div>
           <div className="flex gap-6">
