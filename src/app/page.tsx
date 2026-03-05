@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
+
 import { Shield, Zap, Globe, Github, Twitter, Code2 } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 
 export default function Home() {
-  const { toast } = useToast();
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-emerald-500/30 selection:text-emerald-200 overflow-hidden bg-black">
@@ -46,8 +46,7 @@ export default function Home() {
         <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-sm mx-auto mb-20 relative z-20 text-center">
           <button
             onClick={() => {
-              toast({
-                title: "Waitlist Not Found 😅",
+              toast("Waitlist Not Found 😅", {
                 description: "We told you we haven't built it yet! But we appreciate the enthusiasm.",
                 duration: 5000,
               });
