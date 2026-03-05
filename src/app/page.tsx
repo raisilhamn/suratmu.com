@@ -3,9 +3,10 @@
 import { useRef, useState, useEffect } from 'react';
 import { Shield, Zap, Globe, Github, Twitter, Code2 } from 'lucide-react';
 import StarryBackground from '@/components/StarryBackground';
-import { TeamMember } from '@/components/TeamMember';
+import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
+  const { toast } = useToast();
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-emerald-500/30 selection:text-emerald-200 overflow-hidden bg-black">
@@ -44,7 +45,13 @@ export default function Home() {
         {/* Fake CTA */}
         <div className="opacity-0 animate-fade-in-up delay-300 w-full max-w-sm mx-auto mb-20 relative z-20 text-center">
           <button
-            onClick={() => alert("We told you we haven't built it yet! But we appreciate the enthusiasm.")}
+            onClick={() => {
+              toast({
+                title: "Waitlist Not Found 😅",
+                description: "We told you we haven't built it yet! But we appreciate the enthusiasm.",
+                duration: 5000,
+              });
+            }}
             className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-black hover:bg-emerald-400 py-4 px-8 rounded-2xl font-bold text-lg transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(16,185,129,0.3)]"
           >
             Join the Non-Existent Waitlist
@@ -74,7 +81,7 @@ export default function Home() {
         </div>
 
         {/* Humorous FAQ Section */}
-        <div className="w-full max-w-3xl opacity-0 animate-fade-in-up delay-500 mb-16">
+        <div className="w-full max-w-3xl opacity-0 animate-fade-in-up delay-500 mb-24">
           <h2 className="text-3xl font-bold text-center mb-8 text-white">Frequently Astounding Questions</h2>
           <div className="space-y-4">
             <div className="glass-panel p-6 rounded-2xl">
@@ -95,33 +102,6 @@ export default function Home() {
                 Because it is the color of money, nature, and the Matrix. Mostly the Matrix though. Our founder insisted on it.
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Humorous Team Section */}
-        <div className="w-full max-w-5xl opacity-0 animate-fade-in-up delay-[600ms] mb-24 relative z-10">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">"Team"</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <TeamMember 
-              name="CEO & Founder" 
-              role="Chief 'Ideas' Officer"
-              joke="Currently Googling 'how to start a startup without coding'."
-            />
-            <TeamMember 
-              name="CTO" 
-              role="Lead Prompt Engineer"
-              joke="Copy-pasting AI code until it compiles. It's honest work."
-            />
-            <TeamMember 
-              name="CMO" 
-              role="Head of Vibes"
-              joke="Ensuring the color green is sufficiently green."
-            />
-            <TeamMember 
-              name="The Intern" 
-              role="Actually does the work"
-              joke="Please send help. They locked me in the server room."
-            />
           </div>
         </div>
 
