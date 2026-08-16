@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Suratmu | Premium Email Forwarding",
-  description: "Secure, reliable, and premium email forwarding service. Coming soon.",
+  title: "Suratmu",
+  description: "Suratmu domain information.",
 };
 
 export default function RootLayout({

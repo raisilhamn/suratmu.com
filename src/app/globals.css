@@ -47,7 +47,7 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* Enforcing dark theme for this premium landing page */
+/* Enforcing dark theme for this landing page */
 body {
   background-color: #000;
   color: #fff;

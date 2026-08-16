@@ -4,7 +4,7 @@ export default function StarryBackground() {
   const [stars, setStars] = useState<{ id: number; left: string; size: string; duration: string; delay: string; opacity: string }[]>([]);
 
   useEffect(() => {
-    // Generate only a few stars for a subtle, premium effect, not too overwhelming
+    // Generate only a few stars for a subtle effect, not too overwhelming
     const newStars = Array.from({ length: 40 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
